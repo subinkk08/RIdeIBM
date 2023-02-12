@@ -46,7 +46,7 @@ class InitialViewController: UIViewController {
     
     //Show Dashboard View
     func goToDashboardPage(){
-       
+        LandingPageViewController.showLandingViewPage(sourceView: self)
     }
     
    

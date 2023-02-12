@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 struct apiList{
     
     static let baseURL = "https://random-data-api.com/api/" // BASE URL
@@ -17,8 +15,8 @@ struct apiList{
     
     // TO GET RANDOM VEHICLE LIST URL -
 
-    func getRandomVehicleListBy(size:String)->String{
-        return "\(apiList.baseURL)/?size=\(searchText)"
+    func getRandomVehicleListBy(size:Int)->String{
+        return "\(apiList.baseURL)vehicle/random_vehicle?size=\(size)"
     }
  
 }

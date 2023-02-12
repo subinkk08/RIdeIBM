@@ -15,9 +15,21 @@
 		D7A80F1D2995D7B000882F7B /* RidesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A80F1C2995D7B000882F7B /* RidesTests.swift */; };
 		D7A80F272995D7B000882F7B /* RidesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A80F262995D7B000882F7B /* RidesUITests.swift */; };
 		D7A80F292995D7B000882F7B /* RidesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A80F282995D7B000882F7B /* RidesUITestsLaunchTests.swift */; };
-		D7A80F372995D85A00882F7B /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = D7A80F352995D85A00882F7B /* Helpers */; };
-		D7A80F382995D85A00882F7B /* NetworkHelper in Resources */ = {isa = PBXBuildFile; fileRef = D7A80F362995D85A00882F7B /* NetworkHelper */; };
 		D7A80F402995E4AD00882F7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A80F3F2995E4AD00882F7B /* InitialViewController.swift */; };
+		D7A80F432995E96D00882F7B /* VehicleListAPIResponseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A80F422995E96D00882F7B /* VehicleListAPIResponseModal.swift */; };
+		D7A80F482995E9F700882F7B /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A80F472995E9F700882F7B /* LandingPageViewController.swift */; };
+		D7A80F4A2995EA8300882F7B /* LandingPageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A80F492995EA8300882F7B /* LandingPageView.storyboard */; };
+		D7D264682996CB6F003EA607 /* VehicleListViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D264672996CB6F003EA607 /* VehicleListViewModal.swift */; };
+		D7D2646B2996EC1E003EA607 /* EmissionRateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2646A2996EC1E003EA607 /* EmissionRateCalculator.swift */; };
+		D7D264702996EDB2003EA607 /* ApiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2646F2996EDB2003EA607 /* ApiList.swift */; };
+		D7D264732996F01D003EA607 /* URLSession+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D264722996F01D003EA607 /* URLSession+Helper.swift */; };
+		D7D264752996F086003EA607 /* VehicleListAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D264742996F086003EA607 /* VehicleListAPIService.swift */; };
+		D7D2647C2998635A003EA607 /* VehicleListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7D2647B2998635A003EA607 /* VehicleListTableViewCell.xib */; };
+		D7D2647F29986A0D003EA607 /* UILabelCustomClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2647E29986A0D003EA607 /* UILabelCustomClasses.swift */; };
+		D7D2648129986C73003EA607 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2648029986C73003EA607 /* CommonConstants.swift */; };
+		D7D2648329987F70003EA607 /* VehicleListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2648229987F70003EA607 /* VehicleListTableViewCell.swift */; };
+		D7D264862999240E003EA607 /* ErrorAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D264852999240E003EA607 /* ErrorAPIModel.swift */; };
+		D7D26488299928D6003EA607 /* Rechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D26487299928D6003EA607 /* Rechability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +62,21 @@
 		D7A80F222995D7B000882F7B /* RidesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RidesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A80F262995D7B000882F7B /* RidesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesUITests.swift; sourceTree = "<group>"; };
 		D7A80F282995D7B000882F7B /* RidesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D7A80F352995D85A00882F7B /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
-		D7A80F362995D85A00882F7B /* NetworkHelper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetworkHelper; sourceTree = "<group>"; };
 		D7A80F3F2995E4AD00882F7B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		D7A80F422995E96D00882F7B /* VehicleListAPIResponseModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleListAPIResponseModal.swift; sourceTree = "<group>"; };
+		D7A80F472995E9F700882F7B /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		D7A80F492995EA8300882F7B /* LandingPageView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingPageView.storyboard; sourceTree = "<group>"; };
+		D7D264672996CB6F003EA607 /* VehicleListViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewModal.swift; sourceTree = "<group>"; };
+		D7D2646A2996EC1E003EA607 /* EmissionRateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRateCalculator.swift; sourceTree = "<group>"; };
+		D7D2646F2996EDB2003EA607 /* ApiList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiList.swift; path = NetworkHelper/ApiList.swift; sourceTree = SOURCE_ROOT; };
+		D7D264722996F01D003EA607 /* URLSession+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLSession+Helper.swift"; path = "Helpers/URLSession+Helper.swift"; sourceTree = SOURCE_ROOT; };
+		D7D264742996F086003EA607 /* VehicleListAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListAPIService.swift; sourceTree = "<group>"; };
+		D7D2647B2998635A003EA607 /* VehicleListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleListTableViewCell.xib; sourceTree = "<group>"; };
+		D7D2647E29986A0D003EA607 /* UILabelCustomClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelCustomClasses.swift; sourceTree = "<group>"; };
+		D7D2648029986C73003EA607 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
+		D7D2648229987F70003EA607 /* VehicleListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListTableViewCell.swift; sourceTree = "<group>"; };
+		D7D264852999240E003EA607 /* ErrorAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAPIModel.swift; sourceTree = "<group>"; };
+		D7D26487299928D6003EA607 /* Rechability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +107,8 @@
 		D7A80EF92995D7AD00882F7B = {
 			isa = PBXGroup;
 			children = (
-				D7A80F352995D85A00882F7B /* Helpers */,
-				D7A80F362995D85A00882F7B /* NetworkHelper */,
+				D7D26484299923FA003EA607 /* CommonModels */,
+				D7D264712996EFFA003EA607 /* CommonHelper */,
 				D7A80F042995D7AD00882F7B /* Rides */,
 				D7A80F1B2995D7B000882F7B /* RidesTests */,
 				D7A80F252995D7B000882F7B /* RidesUITests */,
@@ -105,7 +129,9 @@
 		D7A80F042995D7AD00882F7B /* Rides */ = {
 			isa = PBXGroup;
 			children = (
-				D7A80F412995E6C700882F7B /* New Group */,
+				D7D2647D299869D7003EA607 /* CommonClass */,
+				D7D2646E2996ED82003EA607 /* NetworkAPIHelper */,
+				D7A80F412995E6C700882F7B /* Screens */,
 				D7A80F3C2995E28900882F7B /* InitialView */,
 				D7A80F052995D7AD00882F7B /* AppDelegate.swift */,
 				D7A80F072995D7AD00882F7B /* SceneDelegate.swift */,
@@ -142,11 +168,101 @@
 			path = InitialView;
 			sourceTree = "<group>";
 		};
-		D7A80F412995E6C700882F7B /* New Group */ = {
+		D7A80F412995E6C700882F7B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D7A80F452995E9C200882F7B /* LandingPage */,
 			);
-			path = "New Group";
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		D7A80F442995E97100882F7B /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				D7A80F422995E96D00882F7B /* VehicleListAPIResponseModal.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		D7A80F452995E9C200882F7B /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				D7D264692996EC09003EA607 /* Service */,
+				D7D264662996C640003EA607 /* ViewModal */,
+				D7A80F462995E9E300882F7B /* View */,
+				D7A80F442995E97100882F7B /* Modal */,
+			);
+			path = LandingPage;
+			sourceTree = "<group>";
+		};
+		D7A80F462995E9E300882F7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7D26478299861AD003EA607 /* Cell */,
+				D7A80F472995E9F700882F7B /* LandingPageViewController.swift */,
+				D7A80F492995EA8300882F7B /* LandingPageView.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D7D264662996C640003EA607 /* ViewModal */ = {
+			isa = PBXGroup;
+			children = (
+				D7D264672996CB6F003EA607 /* VehicleListViewModal.swift */,
+			);
+			path = ViewModal;
+			sourceTree = "<group>";
+		};
+		D7D264692996EC09003EA607 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D7D2646A2996EC1E003EA607 /* EmissionRateCalculator.swift */,
+				D7D264742996F086003EA607 /* VehicleListAPIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D7D2646E2996ED82003EA607 /* NetworkAPIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D7D2646F2996EDB2003EA607 /* ApiList.swift */,
+			);
+			path = NetworkAPIHelper;
+			sourceTree = "<group>";
+		};
+		D7D264712996EFFA003EA607 /* CommonHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D7D264722996F01D003EA607 /* URLSession+Helper.swift */,
+			);
+			path = CommonHelper;
+			sourceTree = "<group>";
+		};
+		D7D26478299861AD003EA607 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D7D2647B2998635A003EA607 /* VehicleListTableViewCell.xib */,
+				D7D2648229987F70003EA607 /* VehicleListTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D7D2647D299869D7003EA607 /* CommonClass */ = {
+			isa = PBXGroup;
+			children = (
+				D7D2647E29986A0D003EA607 /* UILabelCustomClasses.swift */,
+				D7D2648029986C73003EA607 /* CommonConstants.swift */,
+				D7D26487299928D6003EA607 /* Rechability.swift */,
+			);
+			path = CommonClass;
+			sourceTree = "<group>";
+		};
+		D7D26484299923FA003EA607 /* CommonModels */ = {
+			isa = PBXGroup;
+			children = (
+				D7D264852999240E003EA607 /* ErrorAPIModel.swift */,
+			);
+			path = CommonModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,11 +369,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A80F4A2995EA8300882F7B /* LandingPageView.storyboard in Resources */,
 				D7A80F122995D7B000882F7B /* LaunchScreen.storyboard in Resources */,
-				D7A80F382995D85A00882F7B /* NetworkHelper in Resources */,
 				D7A80F0F2995D7B000882F7B /* Assets.xcassets in Resources */,
-				D7A80F372995D85A00882F7B /* Helpers in Resources */,
 				D7A80F0D2995D7AD00882F7B /* Main.storyboard in Resources */,
+				D7D2647C2998635A003EA607 /* VehicleListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +398,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D264732996F01D003EA607 /* URLSession+Helper.swift in Sources */,
+				D7D2647F29986A0D003EA607 /* UILabelCustomClasses.swift in Sources */,
+				D7A80F482995E9F700882F7B /* LandingPageViewController.swift in Sources */,
+				D7D264682996CB6F003EA607 /* VehicleListViewModal.swift in Sources */,
 				D7A80F402995E4AD00882F7B /* InitialViewController.swift in Sources */,
+				D7D264862999240E003EA607 /* ErrorAPIModel.swift in Sources */,
+				D7D26488299928D6003EA607 /* Rechability.swift in Sources */,
+				D7D2646B2996EC1E003EA607 /* EmissionRateCalculator.swift in Sources */,
+				D7A80F432995E96D00882F7B /* VehicleListAPIResponseModal.swift in Sources */,
 				D7A80F062995D7AD00882F7B /* AppDelegate.swift in Sources */,
+				D7D2648329987F70003EA607 /* VehicleListTableViewCell.swift in Sources */,
+				D7D264702996EDB2003EA607 /* ApiList.swift in Sources */,
 				D7A80F082995D7AD00882F7B /* SceneDelegate.swift in Sources */,
+				D7D2648129986C73003EA607 /* CommonConstants.swift in Sources */,
+				D7D264752996F086003EA607 /* VehicleListAPIService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
