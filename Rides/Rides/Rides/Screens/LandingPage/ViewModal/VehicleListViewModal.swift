@@ -44,6 +44,7 @@ class VehicleListViewModal:NSObject {
         self.isLoading = true
         
         guard  let sizeConverted = Int(size) else {
+            self.vehicleListDisplayModal = []
             self.isLoading = false
             return
         }

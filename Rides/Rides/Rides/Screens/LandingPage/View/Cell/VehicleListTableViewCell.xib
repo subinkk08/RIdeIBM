@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbD-Gc-sh7">
-                        <rect key="frame" x="15" y="15" width="469" height="17"/>
+                        <rect key="frame" x="15" y="10" width="469" height="17"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bbb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dc-1O-wjk" customClass="CellKeyLabel" customModule="Rides" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="17"/>
@@ -46,7 +46,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9F-hu-4tD">
-                        <rect key="frame" x="15" y="42" width="469" height="0.0"/>
+                        <rect key="frame" x="15" y="37" width="469" height="0.0"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRz-SM-g3N" customClass="CellKeyLabel" customModule="Rides" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="0.0"/>
@@ -74,7 +74,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPT-fz-Hl3">
-                        <rect key="frame" x="10" y="52" width="479" height="1"/>
+                        <rect key="frame" x="10" y="47" width="479" height="1"/>
                         <color key="backgroundColor" name="tableViewCellSeperator"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="wIg-Uj-TOr"/>
@@ -82,7 +82,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jbD-Gc-sh7" firstAttribute="top" secondItem="PzI-Jb-HmZ" secondAttribute="top" constant="15" id="7so-6c-8J5"/>
+                    <constraint firstItem="jbD-Gc-sh7" firstAttribute="top" secondItem="PzI-Jb-HmZ" secondAttribute="top" constant="10" id="7so-6c-8J5"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aPT-fz-Hl3" secondAttribute="bottom" constant="5" id="B3i-MX-Pba"/>
                     <constraint firstItem="K9F-hu-4tD" firstAttribute="top" secondItem="jbD-Gc-sh7" secondAttribute="bottom" constant="10" id="HAI-cj-FgX"/>
                     <constraint firstAttribute="trailing" secondItem="jbD-Gc-sh7" secondAttribute="trailing" constant="15" id="OF0-bC-FiW"/>
@@ -113,7 +113,7 @@
     </designables>
     <resources>
         <namedColor name="tableViewCellSeperator">
-            <color red="0.59727304989529639" green="0.59727304989529639" blue="0.59727304989529639" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.59700000286102295" green="0.59700000286102295" blue="0.59700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
