@@ -23,6 +23,7 @@ struct AppConstants{
     static let vehiclePageSortByCarTypeText = "Car Type"
     static let vehicleListTableViewAnimateDuration:Double = 0.2
     static let AlertOk = "Ok"
+    static let vehicleCountPlaceholderText = "Enter your count"
 }
 struct CommonNetWorkResponseErrorMsg {
    static let somethingWentWrong = "Something went wrong."
@@ -30,4 +31,5 @@ struct CommonNetWorkResponseErrorMsg {
     static let invalidUrl = "Invalid URL"
     static let invalidData = "Invalid Data"
     static let success = "Success"
+    
 }

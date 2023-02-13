@@ -43,6 +43,7 @@ class LandingPageViewController: UIViewController{
         self.setUpKeyboardGestures()
         self.SetUpVehicleSortSegmentControl()
         self.activityIndicator(hidden: true)
+        self.setupPlaceholderTextForSearchTextField()
     }
     
     // MARK: - METHODS
@@ -144,6 +145,13 @@ class LandingPageViewController: UIViewController{
             self.sortControlView.isHidden = !isShow
         }
         
+    }
+    
+    private func setupPlaceholderTextForSearchTextField (){
+        self.randomVcountTxtField.attributedPlaceholder =  NSAttributedString(
+            string: AppConstants.vehicleCountPlaceholderText,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "VehicleTextFieldPlaceHolder") ?? UIColor.gray]
+        )
     }
     private func setUpKeyboardGestures(){
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
