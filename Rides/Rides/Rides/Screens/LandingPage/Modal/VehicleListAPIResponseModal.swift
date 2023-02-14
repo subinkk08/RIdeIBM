@@ -13,7 +13,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 
-
 struct VehicleListAPIModal : Codable {
 	let id : Int?
 	let uid : String?
@@ -69,6 +68,7 @@ struct VehicleListAPIModal : Codable {
 		license_plate = try values.decodeIfPresent(String.self, forKey: .license_plate)
 	}
 }
+
 struct ErrorMsgAPIModal : Codable {
     let error : String?
 

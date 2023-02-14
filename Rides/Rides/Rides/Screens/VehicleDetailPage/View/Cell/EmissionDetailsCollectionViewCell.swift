@@ -9,8 +9,8 @@ import UIKit
 
 class EmissionDetailsCollectionViewCell: UICollectionViewCell {
     
+    // MARK: -  OUTLETS
     @IBOutlet weak var emissionKeylabel: UILabel!
-    
     @IBOutlet weak var emissionValueLabel: UILabel!
     
     class var identifier: String { return String(describing: self) }
@@ -20,6 +20,7 @@ class EmissionDetailsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
     func setCellItem(item:VehicleEmissionPresentModal){
         self.emissionKeylabel.text = item.emissionBasedOnKilometerageKey
         self.emissionValueLabel.text = item.emissionBasedOnKilometerageVlaue
@@ -31,7 +32,6 @@ class EmissionDetailsCollectionViewCell: UICollectionViewCell {
         backgroundColor = .clear
         // Line separator full width
         preservesSuperviewLayoutMargins = false
-               
     }
    
     override func prepareForReuse() {

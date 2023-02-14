@@ -9,11 +9,9 @@ import Foundation
 import UIKit
 
 
-class LandingPageViewController: UIViewController{
-    
+final class LandingPageViewController: UIViewController{
     
     // MARK: -  OUTLETS
-    
     @IBOutlet weak var pageTitleLbl: UILabel!
     @IBOutlet weak var activityController: UIActivityIndicatorView!
     @IBOutlet weak var noDataImage: UIImageView!
@@ -26,10 +24,8 @@ class LandingPageViewController: UIViewController{
     static let storyboardName:String = "LandingPageView"
     static let storyBoardId:String = "LandingPageViewController"
     private let viewModel = VehicleListViewModal()
-    
-    
+        
     // MARK: -  VIEW DID LOAD
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +34,6 @@ class LandingPageViewController: UIViewController{
     }
     
     // MARK: - INITIAL VIEW SETTERS
-    
     private func initView(){
         self.registerCharecterCell()
         self.setPageTitle(name: AppConstants.VehicleListpageTitle)
@@ -48,20 +43,23 @@ class LandingPageViewController: UIViewController{
         self.setupPlaceholderTextForSearchTextField()
         self.setupPulltoRefresh()
         self.setSearchButtonRoundView()
+        self.setTextFieldDelegate()
     }
     
     // MARK: - METHODS
-    
     private func activityIndicator(hidden:Bool){
         self.activityController.isHidden = hidden
     }
     
+    private func setTextFieldDelegate(){
+        self.randomVcountTxtField.delegate = self
+    }
     
     private func setSearchButtonRoundView(){
         SearchButtonView.layer.cornerRadius = 10.0
     }
+    
     private func SetUpVehicleSortSegmentControl() {
-        
         self.setSortNameList()
         sortBySegmentControl.addTarget(self, action: #selector(LandingPageViewController.segmentedControlValueChanged(_:)), for: .allEvents)
     }
@@ -69,9 +67,11 @@ class LandingPageViewController: UIViewController{
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         self.viewModel.sortVehicleListBySegmentControl(value: self.sortBySegmentControl.selectedSegmentIndex)
     }
+    
     private func registerCharecterCell(){
         vehicleListTableView.register(VehicleListTableViewCell.nib, forCellReuseIdentifier: VehicleListTableViewCell.identifier)
     }
+    
     private func setPageTitle(name:String){
         self.pageTitleLbl.text = name
     }
@@ -93,9 +93,7 @@ class LandingPageViewController: UIViewController{
     }
     
     // MARK: - VIEWMODAL CLOSURE INIT
-    
     private func initVM() {
-        
         
         viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
@@ -128,11 +126,9 @@ class LandingPageViewController: UIViewController{
                 }
             }
         }
-        
-        
+
         // MARK: RELOAD TABLE VIEW
-        
-      //  DATA COMMUNICATE BETWEEN VIEWMODAL TO VIEW USING THIS CLOSURE METHODS
+        //  DATA COMMUNICATE BETWEEN VIEWMODAL TO VIEW USING THIS CLOSURE METHODS
         
         viewModel.reloadTableViewClosure = { [weak self] () in
            
@@ -147,11 +143,9 @@ class LandingPageViewController: UIViewController{
                 self?.vehicleListTableView.reloadData()
             }
         }
-        
     }
     
     // HIDE/SHOW NO DATA IMAGE BASED ON LIST ITEMS
-    
     private func showNoDataImage(isShow:Bool){
         DispatchQueue.main.async {
             self.noDataImage.isHidden = isShow
@@ -159,19 +153,14 @@ class LandingPageViewController: UIViewController{
     }
     
     // HIDE/SHOW TABLEVIEW
-    
     private  func showTableView(isShow:Bool){
-        
         DispatchQueue.main.async {
             self.vehicleListTableView.isHidden = !isShow
         }
-        
     }
-    
+
     // HIDE/SHOW SORTCONTROLL
-    
     private  func showSortView(isShow:Bool){
-        
         DispatchQueue.main.async {
             self.sortControlView.isHidden = !isShow
         }
@@ -179,7 +168,6 @@ class LandingPageViewController: UIViewController{
     }
     
     // SETUP PLACE HOLDER TEXT
-    
     private func setupPlaceholderTextForSearchTextField (){
         self.randomVcountTxtField.attributedPlaceholder =  NSAttributedString(
             string: AppConstants.vehicleCountPlaceholderText,
@@ -188,18 +176,13 @@ class LandingPageViewController: UIViewController{
     }
     
     // SETUP KEYBOARD GESTURES
-    
-    
     private func setUpKeyboardGestures(){
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
-    
     // SHOW API RESPONSE ALERT
-    
-    
     private  func showAlert( _ message: String ) {
         let alert = UIAlertController(title: AppConstants.appName, message: message, preferredStyle: .alert)
         alert.addAction( UIAlertAction(title: AppConstants.alertOk, style: .cancel, handler: nil))
@@ -214,20 +197,16 @@ class LandingPageViewController: UIViewController{
     @IBAction func searchRandomVehicleTapped(_ sender: Any) {
         self.fetchVehicleDetails()
     }
-    
-    
+
     // MARK: - FETCH VEHICLE LIST
-    
     private func fetchVehicleDetails(){
         self.view.endEditing(true)
         if let size = randomVcountTxtField.text {
             self.viewModel.getVehicleList(size: size)
         }
     }
-    
-    
+
     // MARK: -  SHOW LANDING PAGE METHOD
-    
     class func showLandingViewPage(sourceView:UIViewController){
         let storyboard = UIStoryboard(name: LandingPageViewController.storyboardName, bundle: nil)
         let LandingPageVC:LandingPageViewController = storyboard.instantiateViewController(withIdentifier: LandingPageViewController.storyBoardId) as! LandingPageViewController
@@ -235,8 +214,6 @@ class LandingPageViewController: UIViewController{
         sourceView.navigationController?.pushViewController(LandingPageVC, animated: true)
     }
 }
-
-
 
 // MARK: -  TABLEVIEW DELEGATE  DATASOURCE
 extension LandingPageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -269,8 +246,14 @@ extension LandingPageViewController: UITableViewDelegate, UITableViewDataSource 
         
         VehicleDetailPageViewController.showVehicleDetailViewPage(sourceView: self, vehicleDetails: selectedVehicleDetails)
     }
-    
-    //
+
+}
+
+extension LandingPageViewController :UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 enum vehicleListTableViewAlpha:Double{

@@ -14,11 +14,14 @@
 import Foundation
 class InputRangeValidatorRandomVehicle {
     
-    func checkRange(input:String)->Bool {
+    func checkRandomRange(input: String) -> Bool {
+        let startRange = 1
+        let endRange = 100
         guard let inputNumber = Int(input) else{
+            //checking string validation
             return false
         }
-        let range = (1...100) //
+        let range = (startRange...endRange) //
         if range.contains(inputNumber){
             return true
         }

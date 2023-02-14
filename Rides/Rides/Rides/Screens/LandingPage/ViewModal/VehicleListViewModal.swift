@@ -30,6 +30,7 @@ class VehicleListViewModal:NSObject {
             self.showAlertClosure?()
         }
     }
+    
     var isLoading: Bool = false {
         didSet {
             self.updateLoadingStatus?()
@@ -37,19 +38,14 @@ class VehicleListViewModal:NSObject {
     }
     
     // TO GET VEHICLE LIST FROM API
-    
     func getVehicleList(size:String){
         
         //VALIDATE THE SIZE
-        
         let inputRangeService = InputRangeValidatorRandomVehicle()
-        
-        let result = inputRangeService.checkRange(input: size)
+        let result = inputRangeService.checkRandomRange(input: size)
         
         if result == true { //GIVEN RANGE IS VALID
-            
             self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
-            
             apiServiceManager.fetchVehicleList(size: size) { [ weak self] success, vehicleListResponse, error , msg in
                 self?.isLoading = false
                 if success {
@@ -63,7 +59,6 @@ class VehicleListViewModal:NSObject {
                         self?.alertMessage = msg
                         self?.reloadTableViewClosure?()  // RELOAD TABLEVIEW
                     }
-                    
                 }
             }
         }
@@ -71,18 +66,14 @@ class VehicleListViewModal:NSObject {
             let msg = AppConstants.inputRangeVehicleErrorMsg
             self.alertMessage = msg
         }
-        
     }
     
     // TO GET SORT NAME LIST
-    
     func getSortNameList()->[String]{
         return [AppConstants.vehiclePageSortByVinText,AppConstants.vehiclePageSortByCarTypeText]
     }
     
-    
-    // SORT BY SELECTED TYPE
-    
+    // SORT BY SELECTED TYP
     func sortVehicleListBySegmentControl(value:Int){
         
         
@@ -107,7 +98,6 @@ class VehicleListViewModal:NSObject {
     }
     
     //MARK: TABLE VIEW RELATED
-    
     var numberOfCells: Int {
         return vehicleListDisplayModal.count
     }
@@ -124,19 +114,16 @@ class VehicleListViewModal:NSObject {
 
 struct VechicleListPresentModal{
     
-    
     var vin:String = ""
     var makeAndModal:String = ""
     var color:String = ""
     var carType:String = ""
     var kilometrage:Int? = nil
-    
     var vinKey:String = "Vin:"
     var makeAndModalKey:String = "Make and Model:"
     var colorKey:String = "Color:"
     var carTypeKey:String = "Car Type:"
-    
-    
+
     func getVehicleListDisplayListBy(apiResponse:[VehicleListAPIModal])->[VechicleListPresentModal] {
         var resultList:[VechicleListPresentModal] = []
         for resultItem in apiResponse {
@@ -150,8 +137,6 @@ struct VechicleListPresentModal{
         }
         return resultList
     }
-    
-    
 }
 
 enum SortVehicleList:Int{
