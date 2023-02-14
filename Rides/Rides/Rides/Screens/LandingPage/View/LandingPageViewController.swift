@@ -12,7 +12,7 @@ import UIKit
 final class LandingPageViewController: UIViewController{
     
     // MARK: -  OUTLETS
-    @IBOutlet weak var pageTitleLbl: UILabel!
+
     @IBOutlet weak var activityController: UIActivityIndicatorView!
     @IBOutlet weak var noDataImage: UIImageView!
     @IBOutlet weak var randomVcountTxtField: UITextField!
@@ -36,7 +36,6 @@ final class LandingPageViewController: UIViewController{
     // MARK: - INITIAL VIEW SETTERS
     private func initView(){
         self.registerCharecterCell()
-        self.setPageTitle(name: AppConstants.VehicleListpageTitle)
         self.setUpKeyboardGestures()
         self.SetUpVehicleSortSegmentControl()
         self.activityIndicator(hidden: true)
@@ -44,11 +43,21 @@ final class LandingPageViewController: UIViewController{
         self.setupPulltoRefresh()
         self.setSearchButtonRoundView()
         self.setTextFieldDelegate()
+        self.hideNavigationBackButton()
+        self.setNavigationBarTitle()
     }
     
     // MARK: - METHODS
     private func activityIndicator(hidden:Bool){
         self.activityController.isHidden = hidden
+    }
+    
+    private func hideNavigationBackButton(){
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    private func setNavigationBarTitle(){
+        self.navigationItem.title =  AppConstants.VehicleListPageTitle
     }
     
     private func setTextFieldDelegate(){
@@ -70,10 +79,6 @@ final class LandingPageViewController: UIViewController{
     
     private func registerCharecterCell(){
         vehicleListTableView.register(VehicleListTableViewCell.nib, forCellReuseIdentifier: VehicleListTableViewCell.identifier)
-    }
-    
-    private func setPageTitle(name:String){
-        self.pageTitleLbl.text = name
     }
     
     private func setSortNameList(){

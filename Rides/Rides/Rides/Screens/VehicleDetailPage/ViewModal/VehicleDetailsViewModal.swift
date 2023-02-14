@@ -24,7 +24,7 @@ class VehicleDetailsPageViewModal:NSObject {
         emissionDetails = VehicleEmissionPresentModal().getEmissionPresentDetails(kilometerage: self.vehicleDetails.kilometrage ?? 0)
     }
     
-    func getPageHeader()->String {
+    func getPageHeaderTitle()->String {
         let pageTitle = self.vehicleDetails.makeAndModal // RETURN MAKE AND MODEL AS PAGE TITLE
         return pageTitle
     }

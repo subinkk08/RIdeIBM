@@ -18,7 +18,7 @@ struct CommonFontList{
 }
 struct AppConstants{
     static let appName = "Rides"
-    static let VehicleListpageTitle = "Vehicle List"
+    static let VehicleListPageTitle = "Vehicle List"
     static let VehicleDetailpageTitle = "Vehicle Details"
     static let vehiclePageSortByVinText = "Vin"
     static let vehiclePageSortByCarTypeText = "Car Type"

@@ -16,7 +16,6 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     
     // MARK: -  OUTLETS
     @IBOutlet weak var collectionVehicleDetails: UICollectionView!
-    @IBOutlet weak var pageTItleLabel: PageHeaderLabel!
     @IBOutlet weak var pageIndicator: UIPageControl!
     static let storyboardName:String = "VehicleDetail"
     static let storyBoardId:String = "VehicleDetailPageViewController"
@@ -34,7 +33,7 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     
     // MARK: - INITIAL VIEW LOAD
     private func initView(){
-        self.enableSwipeBackGesture()
+       // self.enableSwipeBackGesture()
         self.registerVehicleDetailCell()
         self.registerEmissionDetailCell()
         self.setupPageIndicatory()
@@ -42,9 +41,8 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     
     // MARK: - INITIAL VIEW MODEL
     private func initVM(){
-        
         self.setDataSourceToViewModal()
-        self.setPageTitle()
+        self.setNavigationBarTitle()
         self.viewModel.showVehicleDetails() //TO GET VEHICLE DETAILS FROM VIEW MODAL
         self.viewModel.reloadCollectionViewClosure = { [weak self] () in
             DispatchQueue.main.async {
@@ -54,9 +52,8 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     }
     
     // MARK: - PRIVATE METHODS
-    private func enableSwipeBackGesture(){
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-           navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    private func setNavigationBarTitle(){
+        self.navigationItem.title =  self.viewModel.getPageHeaderTitle()
     }
     
     private func setupPageIndicatory(){
@@ -77,10 +74,6 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     private func setDataSourceToViewModal(){
         self.viewModel.setDataSource(item: self.vehicleDetails)
     }
-    
-    private func setPageTitle(){
-        self.pageTItleLabel.text = self.viewModel.getPageHeader()
-    }
   
     // MARK: - SHOW VEHICLE DETAIL PAGE
     class func showVehicleDetailViewPage(sourceView:UIViewController,vehicleDetails:VechicleListPresentModal){
@@ -90,14 +83,9 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
         detailViewVC.vehicleDetails = vehicleDetails
         sourceView.navigationController?.pushViewController(detailViewVC, animated: true)
     }
-    
-    @IBAction func btnBackTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-       
 }
-// MARK: - COLLECTION VIEW  DATA SOURCE AND DELEGATES
 
+// MARK: - COLLECTION VIEW  DATA SOURCE AND DELEGATES
 extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -139,6 +127,7 @@ extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollect
         }
     }
 }
+
 extension VehicleDetailPageViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageIndicator.currentPage = Int(
