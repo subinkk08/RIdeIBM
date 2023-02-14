@@ -46,7 +46,11 @@ class VehicleListViewModal:NSObject {
         
         if result == true { //GIVEN RANGE IS VALID
             self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
-            apiServiceManager.fetchVehicleList(size: size) { [ weak self] success, vehicleListResponse, error , msg in
+            apiServiceManager.fetchVehicleList(size: size) {
+                [ weak self] success,
+                vehicleListResponse,
+                error , msg in
+                
                 self?.isLoading = false
                 if success {
                     self?.vehicleListDisplayModal =   VechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
@@ -109,9 +113,7 @@ class VehicleListViewModal:NSObject {
     }
 }
 
-
 //PRESENT VIEW MODAL FOR VEHICLE LIST
-
 struct VechicleListPresentModal{
     
     var vin:String = ""

@@ -76,7 +76,9 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     }
   
     // MARK: - SHOW VEHICLE DETAIL PAGE
-    class func showVehicleDetailViewPage(sourceView:UIViewController,vehicleDetails:VechicleListPresentModal){
+    class func showVehicleDetailViewPage(
+        sourceView:UIViewController,
+        vehicleDetails:VechicleListPresentModal){
         let storyboard = UIStoryboard(name: VehicleDetailPageViewController.storyboardName, bundle: nil)
         let detailViewVC:VehicleDetailPageViewController = storyboard.instantiateViewController(withIdentifier: VehicleDetailPageViewController.storyBoardId) as! VehicleDetailPageViewController
         // sourceView.navigationController?.isNavigationBarHidden = true

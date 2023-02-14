@@ -21,7 +21,9 @@ struct EmissionCalculatorModal{
     }
     
      func getEmissionCalculater(totalKilometers:Int)->Double{
-        return emissionCalculator.getEmissionCalculatorBy(totalKilometers: totalKilometers, initialKiloMeterRange: initialKiloMeterRange)
+        return emissionCalculator.getEmissionCalculatorBy(
+            totalKilometers: totalKilometers,
+            initialKiloMeterRange: initialKiloMeterRange)
     }
 }
 
@@ -31,7 +33,9 @@ class EmissionCalculatorService:EmissionCalculatorProtocol{
     //for the first 5000km travelled, 1 unit of carbon is emitted per kilometre
     //after the first 5000km travelled, 1.5 units is emitted per kilometre
     
-    func getEmissionCalculatorBy(totalKilometers: Int,initialKiloMeterRange: Int) -> Double {
+    func getEmissionCalculatorBy(
+        totalKilometers: Int,
+        initialKiloMeterRange: Int) -> Double {
                
         let initialUnitEmissionRate:Double = 1.0
         let afterUnitEmissionRate:Double = 0.5

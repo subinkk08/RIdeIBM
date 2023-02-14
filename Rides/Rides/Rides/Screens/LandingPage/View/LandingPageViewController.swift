@@ -230,7 +230,6 @@ extension LandingPageViewController: UITableViewDelegate, UITableViewDataSource 
         
         let cellVM = viewModel.getCellViewModel( at: indexPath )
         cell.setCellItem(item: cellVM)
-        
         return cell
     }
     
@@ -249,7 +248,9 @@ extension LandingPageViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedVehicleDetails = self.viewModel.getCellViewModel(at: indexPath)
         
-        VehicleDetailPageViewController.showVehicleDetailViewPage(sourceView: self, vehicleDetails: selectedVehicleDetails)
+        VehicleDetailPageViewController.showVehicleDetailViewPage(
+            sourceView: self,
+            vehicleDetails: selectedVehicleDetails)
     }
 
 }
