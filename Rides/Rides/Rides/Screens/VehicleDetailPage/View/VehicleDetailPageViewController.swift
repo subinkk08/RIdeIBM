@@ -17,6 +17,7 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     // MARK: -  OUTLETS
     @IBOutlet weak var collectionVehicleDetails: UICollectionView!
     @IBOutlet weak var pageTItleLabel: PageHeaderLabel!
+    @IBOutlet weak var pageIndicator: UIPageControl!
     static let storyboardName:String = "VehicleDetail"
     static let storyBoardId:String = "VehicleDetailPageViewController"
     
@@ -36,6 +37,7 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
         self.enableSwipeBackGesture()
         self.registerVehicleDetailCell()
         self.registerEmissionDetailCell()
+        self.setupPageIndicatory()
     }
     
     // MARK: - INITIAL VIEW MODEL
@@ -55,6 +57,13 @@ final class VehicleDetailPageViewController: UIViewController, UIGestureRecogniz
     private func enableSwipeBackGesture(){
         navigationController?.interactivePopGestureRecognizer?.delegate = self
            navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    private func setupPageIndicatory(){
+        self.pageIndicator.numberOfPages = self.viewModel.getPageIndicatroCount()
+        self.pageIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.pageIndicator.currentPageIndicatorTintColor = UIColor.orange
+        self.pageIndicator.pageIndicatorTintColor = UIColor.lightGray.withAlphaComponent(0.8)
     }
     
     private func registerVehicleDetailCell(){
@@ -126,9 +135,15 @@ extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollect
         return CGSize(width:self.collectionVehicleDetails.frame.width, height:collectionVehicleDetails.frame.height)
        }
         else{
-            return CGSize(width:self.collectionVehicleDetails.frame.width-20, height:collectionVehicleDetails.frame.height)
+            return CGSize(width:self.collectionVehicleDetails.frame.width, height:collectionVehicleDetails.frame.height)
         }
     }
 }
-
-
+extension VehicleDetailPageViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.pageIndicator.currentPage = Int(
+            (collectionVehicleDetails.contentOffset.x / collectionVehicleDetails.frame.width)
+                .rounded(.toNearestOrAwayFromZero)
+            )
+    }
+}

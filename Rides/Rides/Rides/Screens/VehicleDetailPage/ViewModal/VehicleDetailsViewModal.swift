@@ -12,6 +12,7 @@ class VehicleDetailsPageViewModal:NSObject {
     var vehicleDetails:VechicleListPresentModal = VechicleListPresentModal()
     var emissionDetails:VehicleEmissionPresentModal = VehicleEmissionPresentModal()
     var totalSections = 2
+    var totalPageCount = 2
     override init() {
         
     }
@@ -44,6 +45,10 @@ class VehicleDetailsPageViewModal:NSObject {
     
     func showVehicleDetails(){
         self.reloadCollectionViewClosure?()  // RELOAD TABLEVIEW
+    }
+    
+    func getPageIndicatroCount() ->Int{
+        return self.totalPageCount
     }
     
 }

@@ -34,13 +34,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dX2-I0-w7Z">
-                                        <rect key="frame" x="8" y="10" width="30" height="20"/>
+                                        <rect key="frame" x="8" y="8" width="30" height="24"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="uGA-W3-tIt">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
+                                                <rect key="frame" x="0.0" y="5" width="30" height="14"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEt-TB-fSZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="24"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
@@ -50,9 +50,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="uGA-W3-tIt" firstAttribute="top" secondItem="dX2-I0-w7Z" secondAttribute="top" id="5QI-ms-nAy"/>
+                                            <constraint firstItem="uGA-W3-tIt" firstAttribute="top" secondItem="dX2-I0-w7Z" secondAttribute="top" constant="5" id="5QI-ms-nAy"/>
                                             <constraint firstAttribute="trailing" secondItem="vEt-TB-fSZ" secondAttribute="trailing" id="ABG-bV-voy"/>
-                                            <constraint firstAttribute="bottom" secondItem="uGA-W3-tIt" secondAttribute="bottom" id="H4c-Rp-nTA"/>
+                                            <constraint firstAttribute="bottom" secondItem="uGA-W3-tIt" secondAttribute="bottom" constant="5" id="H4c-Rp-nTA"/>
                                             <constraint firstItem="vEt-TB-fSZ" firstAttribute="top" secondItem="dX2-I0-w7Z" secondAttribute="top" id="Q44-N1-dDs"/>
                                             <constraint firstItem="uGA-W3-tIt" firstAttribute="leading" secondItem="dX2-I0-w7Z" secondAttribute="leading" id="XoJ-bB-weo"/>
                                             <constraint firstItem="vEt-TB-fSZ" firstAttribute="leading" secondItem="dX2-I0-w7Z" secondAttribute="leading" id="ljr-4I-OPK"/>
@@ -65,20 +65,20 @@
                                 <color key="backgroundColor" name="AppTopView"/>
                                 <constraints>
                                     <constraint firstItem="AHH-zC-9r4" firstAttribute="centerX" secondItem="DnF-aV-YlR" secondAttribute="centerX" id="35S-b8-aOu"/>
-                                    <constraint firstAttribute="bottom" secondItem="dX2-I0-w7Z" secondAttribute="bottom" constant="10" id="8MA-ho-nxf"/>
+                                    <constraint firstAttribute="bottom" secondItem="dX2-I0-w7Z" secondAttribute="bottom" constant="8" id="8MA-ho-nxf"/>
                                     <constraint firstItem="l3l-p7-s07" firstAttribute="leading" secondItem="DnF-aV-YlR" secondAttribute="leading" id="MVL-1g-a2p"/>
                                     <constraint firstAttribute="trailing" secondItem="l3l-p7-s07" secondAttribute="trailing" id="QJG-bW-Mzd"/>
                                     <constraint firstItem="AHH-zC-9r4" firstAttribute="centerY" secondItem="DnF-aV-YlR" secondAttribute="centerY" id="WgD-Zi-E4E"/>
                                     <constraint firstItem="dX2-I0-w7Z" firstAttribute="leading" secondItem="DnF-aV-YlR" secondAttribute="leading" constant="8" id="e2A-bW-QOe"/>
                                     <constraint firstAttribute="height" constant="40" id="h3H-2t-Gk2"/>
                                     <constraint firstAttribute="bottom" secondItem="l3l-p7-s07" secondAttribute="bottom" id="t6c-e0-zN2"/>
-                                    <constraint firstItem="dX2-I0-w7Z" firstAttribute="top" secondItem="DnF-aV-YlR" secondAttribute="top" constant="10" id="wHg-uz-kOP"/>
+                                    <constraint firstItem="dX2-I0-w7Z" firstAttribute="top" secondItem="DnF-aV-YlR" secondAttribute="top" constant="8" id="wHg-uz-kOP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asG-bL-vCg">
                                 <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ous-63-far">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ous-63-far">
                                         <rect key="frame" x="5" y="10" width="404" height="802"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ImE-db-gLP">
@@ -93,12 +93,21 @@
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="gvz-fi-RN7"/>
                                         </connections>
                                     </collectionView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="qn3-Io-W4s">
+                                        <rect key="frame" x="147" y="742" width="120" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="23n-pZ-pPt"/>
+                                            <constraint firstAttribute="height" constant="30" id="sle-D6-dsL"/>
+                                        </constraints>
+                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ous-63-far" secondAttribute="trailing" constant="5" id="5P5-of-06i"/>
+                                    <constraint firstItem="qn3-Io-W4s" firstAttribute="centerX" secondItem="asG-bL-vCg" secondAttribute="centerX" id="Clt-ra-LSn"/>
                                     <constraint firstItem="ous-63-far" firstAttribute="leading" secondItem="asG-bL-vCg" secondAttribute="leading" constant="5" id="OZb-jS-1tf"/>
                                     <constraint firstAttribute="bottom" secondItem="ous-63-far" secondAttribute="bottom" id="T5Z-Gn-csu"/>
+                                    <constraint firstAttribute="bottom" secondItem="qn3-Io-W4s" secondAttribute="bottom" constant="40" id="Ypd-lY-ed6"/>
                                     <constraint firstItem="ous-63-far" firstAttribute="top" secondItem="asG-bL-vCg" secondAttribute="top" constant="10" id="inS-8o-fjW"/>
                                 </constraints>
                             </view>
@@ -117,6 +126,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionVehicleDetails" destination="ous-63-far" id="x7Q-wp-gcj"/>
+                        <outlet property="pageIndicator" destination="qn3-Io-W4s" id="Njc-EA-lL8"/>
                         <outlet property="pageTItleLabel" destination="AHH-zC-9r4" id="1Dj-dw-e0u"/>
                     </connections>
                 </viewController>
