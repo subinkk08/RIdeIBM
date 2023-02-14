@@ -9,21 +9,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmissionDetailsCollectionViewCell" id="gTV-IL-0wX" customClass="EmissionDetailsCollectionViewCell" customModule="Rides" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="424" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="EmissionDetailsCollectionViewCell" id="gTV-IL-0wX" customClass="EmissionDetailsCollectionViewCell" customModule="Rides" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="476" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="424" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="476" height="60"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucG-VY-pXd" customClass="CellKeyLabel" customModule="Rides" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="10" width="169.5" height="20.5"/>
+                        <rect key="frame" x="0.0" y="10" width="190.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdy-Oq-vVN" customClass="CellValueLabel" customModule="Rides" customModuleProvider="target">
-                        <rect key="frame" x="179.5" y="10" width="234.5" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdy-Oq-vVN" customClass="CellValueLabel" customModule="Rides" customModuleProvider="target">
+                        <rect key="frame" x="200.5" y="10" width="275.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,18 +35,18 @@
                 <constraint firstItem="ucG-VY-pXd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="LrG-YZ-ZPY"/>
                 <constraint firstItem="Wdy-Oq-vVN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="TU5-N2-7IA"/>
                 <constraint firstItem="Wdy-Oq-vVN" firstAttribute="leading" secondItem="ucG-VY-pXd" secondAttribute="trailing" constant="10" id="c0v-Fj-GAX"/>
-                <constraint firstAttribute="trailing" secondItem="Wdy-Oq-vVN" secondAttribute="trailing" constant="10" id="cAR-nq-Km0"/>
+                <constraint firstAttribute="trailing" secondItem="Wdy-Oq-vVN" secondAttribute="trailing" id="cAR-nq-Km0"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wdy-Oq-vVN" secondAttribute="bottom" id="egd-iW-2RK"/>
                 <constraint firstItem="ucG-VY-pXd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hfr-6S-igq"/>
                 <constraint firstItem="ucG-VY-pXd" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.4" id="rve-Ls-5sJ"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ucG-VY-pXd" secondAttribute="bottom" id="y96-C9-1ld"/>
             </constraints>
-            <size key="customSize" width="424" height="50"/>
+            <size key="customSize" width="476" height="60"/>
             <connections>
                 <outlet property="emissionKeylabel" destination="ucG-VY-pXd" id="AAG-sy-Ij4"/>
                 <outlet property="emissionValueLabel" destination="Wdy-Oq-vVN" id="zj7-xM-kRE"/>
             </connections>
-            <point key="canvasLocation" x="402.89855072463769" y="90.401785714285708"/>
+            <point key="canvasLocation" x="440.57971014492756" y="93.75"/>
         </collectionViewCell>
     </objects>
 </document>
