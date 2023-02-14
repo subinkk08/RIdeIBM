@@ -30,7 +30,7 @@ class VehicleListTableViewCell: UITableViewCell {
         initView()
     }
     
-    func setCellItem(item:vechicleListPresentModal){
+    func setCellItem(item:VechicleListPresentModal){
         self.vinLblKey.text = item.vinKey
         self.vinLblValue.text = item.vin
         self.makeAndModelLblKey.text = item.makeAndModalKey

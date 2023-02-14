@@ -16,7 +16,7 @@ extension URLSession{
     
     func request<T:Codable>(url:URL?,expecting:T.Type,completion: @escaping (Result<T,Error>,String)-> Void){
         guard let url = url else{
-            completion(.failure(CustomAPIError.invalidUrl),"")
+            completion(.failure(CustomAPIError.invalidUrl),CommonNetWorkResponseErrorMsg.invalidInput)
             return
         }
         let task = self.dataTask(with: url) { data,_, error in
@@ -26,7 +26,7 @@ extension URLSession{
                     completion(.failure(error),error.localizedDescription)
                 }
                 else{
-                    completion(.failure(CustomAPIError.invalidData),"")
+                    completion(.failure(CustomAPIError.invalidData),CommonNetWorkResponseErrorMsg.somethingWentWrong)
                 }
                 return
             }
@@ -44,7 +44,7 @@ extension URLSession{
                 
             }
             catch{
-                completion(.failure(error),"")
+                completion(.failure(error),CommonNetWorkResponseErrorMsg.somethingWentWrong)
             }
         }
         task.resume()

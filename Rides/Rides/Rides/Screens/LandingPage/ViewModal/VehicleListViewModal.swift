@@ -13,10 +13,9 @@ import Foundation
 
 class VehicleListViewModal:NSObject {
     
-    private let apiServiceManager: VehicleListAPIServiceProtocol
-    
-    private var vehicleListDisplayModal:[vechicleListPresentModal] = []
-    private var selectedSortOrderEnum :SortVehicleList = SortVehicleList.vin // by default vin type
+    private let apiServiceManager: VehicleListAPIServiceProtocol  // INTERFACE VEHICLE API SERVICE PROTOCOL
+    private var vehicleListDisplayModal:[VechicleListPresentModal] = []
+    private var selectedSortOrderEnum :SortVehicleList = SortVehicleList.vin // BY default vin type later based on user selection
     var reloadTableViewClosure: (()->())?
     var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
@@ -41,40 +40,40 @@ class VehicleListViewModal:NSObject {
     
     func getVehicleList(size:String){
         
-        self.isLoading = true
+        self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
         
-        guard  let sizeConverted = Int(size) else {
-            self.vehicleListDisplayModal = []
-            self.isLoading = false
-            return
-        }
-        
-        apiServiceManager.fetchVehicleList(size: sizeConverted) { [ weak self] success, vehicleListResponse, error , msg in
+        apiServiceManager.fetchVehicleList(size: size) { [ weak self] success, vehicleListResponse, error , msg in
             self?.isLoading = false
             if success {
-                self?.vehicleListDisplayModal =   vechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
-                self?.sortVehicleList()
-                self?.reloadTableViewClosure?()
+                self?.vehicleListDisplayModal =   VechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
+                self?.sortVehicleList() // TO SORT LIST BY VIN BY DEFAULT
+                self?.reloadTableViewClosure?() // RELOAD TABLEVIEW
             }
             else{
                 if error == CustomAPIError.errorMsg {
                     self?.vehicleListDisplayModal = []
                     self?.alertMessage = msg
-                    self?.reloadTableViewClosure?()
+                    self?.reloadTableViewClosure?()  // RELOAD TABLEVIEW
                 }
                 
             }
         }
         
     }
+    
+    // TO GET SORT NAME LIST
+    
     func getSortNameList()->[String]{
         return [AppConstants.vehiclePageSortByVinText,AppConstants.vehiclePageSortByCarTypeText]
     }
     
+    
+    // SORT BY SELECTED TYPE
+    
     func sortVehicleListBySegmentControl(value:Int){
         
         
-        if value == 0 {
+        if value == SortVehicleList.vin.rawValue {
             self.selectedSortOrderEnum = .vin
         }
         else{
@@ -94,7 +93,7 @@ class VehicleListViewModal:NSObject {
         }
     }
     
-    //MARK: TABLE VIEW LISTED
+    //MARK: TABLE VIEW RELATED
     
     var numberOfCells: Int {
         return vehicleListDisplayModal.count
@@ -102,31 +101,37 @@ class VehicleListViewModal:NSObject {
     var numberOfSections: Int {
         return 1
     }
-    func getCellViewModel( at indexPath: IndexPath ) -> vechicleListPresentModal {
+    func getCellViewModel( at indexPath: IndexPath ) -> VechicleListPresentModal {
         return vehicleListDisplayModal[indexPath.row]
     }
 }
 
-struct vechicleListPresentModal{
+
+//PRESENT VIEW MODAL FOR VEHICLE LIST
+
+struct VechicleListPresentModal{
     
     
     var vin:String = ""
     var makeAndModal:String = ""
     var color:String = ""
     var carType:String = ""
+    var kilometrage:Int? = nil
     
     var vinKey:String = "Vin:"
     var makeAndModalKey:String = "Make and Model:"
     var colorKey:String = "Color:"
-    var carTypeKey:String = " Car Type:"
+    var carTypeKey:String = "Car Type:"
+
     
-    func getVehicleListDisplayListBy(apiResponse:[VehicleListAPIModal])->[vechicleListPresentModal] {
-        var resultList:[vechicleListPresentModal] = []
+    func getVehicleListDisplayListBy(apiResponse:[VehicleListAPIModal])->[VechicleListPresentModal] {
+        var resultList:[VechicleListPresentModal] = []
         for resultItem in apiResponse {
-            var rowItem = vechicleListPresentModal()
+            var rowItem = VechicleListPresentModal()
             rowItem.carType = resultItem.car_type ?? ""
             rowItem.color = resultItem.color ?? ""
             rowItem.makeAndModal = resultItem.make_and_model ?? ""
+            rowItem.kilometrage = resultItem.kilometrage ?? nil
             rowItem.vin = resultItem.vin ?? ""
             resultList.append(rowItem)
         }

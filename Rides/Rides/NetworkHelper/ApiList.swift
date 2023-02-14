@@ -15,7 +15,7 @@ struct apiList{
     
     // TO GET RANDOM VEHICLE LIST URL -
 
-    func getRandomVehicleListBy(size:Int)->String{
+    func getRandomVehicleListBy(size:String)->String{
         return "\(apiList.baseURL)vehicle/random_vehicle?size=\(size)"
     }
  
@@ -25,4 +25,5 @@ enum APIError: String, Error {
     case noNetwork = "No Network"
     case serverOverload = "Server is overloaded"
     case permissionDenied = "You don't have permission"
+    case invalidURL = "Invalid parameters"
 }

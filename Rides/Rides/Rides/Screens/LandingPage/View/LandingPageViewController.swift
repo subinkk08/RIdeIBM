@@ -21,21 +21,23 @@ class LandingPageViewController: UIViewController{
     @IBOutlet weak var vehicleListTableView: UITableView!
     @IBOutlet weak var sortBySegmentControl: UISegmentedControl!
     @IBOutlet weak var sortControlView: UIView!
+    @IBOutlet weak var SearchButtonView: UIView!
     
     static let storyboardName:String = "LandingPageView"
     static let storyBoardId:String = "LandingPageViewController"
     private let viewModel = VehicleListViewModal()
-  
-  
+    
+    
     // MARK: -  VIEW DID LOAD
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        
         self.initView()
         self.initVM()
     }
     
-    // MARK: - INITIAL VIEW LOAD
+    // MARK: - INITIAL VIEW SETTERS
     
     private func initView(){
         self.registerCharecterCell()
@@ -44,6 +46,8 @@ class LandingPageViewController: UIViewController{
         self.SetUpVehicleSortSegmentControl()
         self.activityIndicator(hidden: true)
         self.setupPlaceholderTextForSearchTextField()
+        self.setupPulltoRefresh()
+        self.setSearchButtonRoundView()
     }
     
     // MARK: - METHODS
@@ -52,10 +56,13 @@ class LandingPageViewController: UIViewController{
         self.activityController.isHidden = hidden
     }
     
+    
+    private func setSearchButtonRoundView(){
+        SearchButtonView.layer.cornerRadius = 10.0
+    }
     private func SetUpVehicleSortSegmentControl() {
         
         self.setSortNameList()
-        
         sortBySegmentControl.addTarget(self, action: #selector(LandingPageViewController.segmentedControlValueChanged(_:)), for: .allEvents)
     }
     
@@ -75,11 +82,21 @@ class LandingPageViewController: UIViewController{
         self.sortBySegmentControl.setTitle(sortNameList[1], forSegmentAt: 1)
     }
     
+    private func setupPulltoRefresh(){
+        vehicleListTableView.refreshControl = UIRefreshControl()
+        vehicleListTableView.refreshControl?.addTarget(self,
+                                                       action: #selector(pullToRefresh), for: .valueChanged)
+    }
+    
+    @objc func pullToRefresh() {
+        self.fetchVehicleDetails()
+    }
     
     // MARK: - VIEWMODAL CLOSURE INIT
+    
     private func initVM() {
         
-     
+        
         viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
                 if let message = self?.viewModel.alertMessage {
@@ -91,6 +108,8 @@ class LandingPageViewController: UIViewController{
         viewModel.updateLoadingStatus = { [weak self] () in
             DispatchQueue.main.async {
                 let isLoading = self?.viewModel.isLoading ?? false
+                
+                // SHOW ACTIVITY CONTROLL
                 if isLoading {
                     self?.activityIndicator(hidden: false)
                     self?.activityController.startAnimating()
@@ -99,7 +118,7 @@ class LandingPageViewController: UIViewController{
                         self?.sortControlView.alpha = vehicleListTableViewAlpha.hide.rawValue
                     })
                 }else {
-                    
+                    // HIDE ACTIVITY CONTROLL
                     self?.activityController.stopAnimating()
                     UIView.animate(withDuration: AppConstants.vehicleListTableViewAnimateDuration, animations: {
                         self?.vehicleListTableView.alpha = vehicleListTableViewAlpha.show.rawValue
@@ -111,10 +130,12 @@ class LandingPageViewController: UIViewController{
         }
         
         
-        //RELOAD TABLE VIEW
+        // MARK: RELOAD TABLE VIEW
+        
+      //  DATA COMMUNICATE BETWEEN VIEWMODAL TO VIEW USING THIS CLOSURE METHODS
         
         viewModel.reloadTableViewClosure = { [weak self] () in
-            
+           
             if let listCount = self?.viewModel.numberOfCells {
                 self?.showTableView(isShow: (listCount > 0))
                 self?.showSortView(isShow: (listCount > 0))
@@ -122,16 +143,23 @@ class LandingPageViewController: UIViewController{
             }
             
             DispatchQueue.main.async {
+                self?.vehicleListTableView.refreshControl?.endRefreshing()
                 self?.vehicleListTableView.reloadData()
             }
         }
         
     }
+    
+    // HIDE/SHOW NO DATA IMAGE BASED ON LIST ITEMS
+    
     private func showNoDataImage(isShow:Bool){
         DispatchQueue.main.async {
-             self.noDataImage.isHidden = isShow
+            self.noDataImage.isHidden = isShow
         }
     }
+    
+    // HIDE/SHOW TABLEVIEW
+    
     private  func showTableView(isShow:Bool){
         
         DispatchQueue.main.async {
@@ -139,6 +167,9 @@ class LandingPageViewController: UIViewController{
         }
         
     }
+    
+    // HIDE/SHOW SORTCONTROLL
+    
     private  func showSortView(isShow:Bool){
         
         DispatchQueue.main.async {
@@ -147,21 +178,31 @@ class LandingPageViewController: UIViewController{
         
     }
     
+    // SETUP PLACE HOLDER TEXT
+    
     private func setupPlaceholderTextForSearchTextField (){
         self.randomVcountTxtField.attributedPlaceholder =  NSAttributedString(
             string: AppConstants.vehicleCountPlaceholderText,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "VehicleTextFieldPlaceHolder") ?? UIColor.gray]
         )
     }
+    
+    // SETUP KEYBOARD GESTURES
+    
+    
     private func setUpKeyboardGestures(){
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
+    
+    // SHOW API RESPONSE ALERT
+    
+    
     private  func showAlert( _ message: String ) {
-        let alert = UIAlertController(title: AppConstants.AppName, message: message, preferredStyle: .alert)
-        alert.addAction( UIAlertAction(title: AppConstants.AlertOk, style: .cancel, handler: nil))
+        let alert = UIAlertController(title: AppConstants.appName, message: message, preferredStyle: .alert)
+        alert.addAction( UIAlertAction(title: AppConstants.alertOk, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -171,12 +212,17 @@ class LandingPageViewController: UIViewController{
     
     // MARK: - SEARCH BUTTON TAPPED
     @IBAction func searchRandomVehicleTapped(_ sender: Any) {
+        self.fetchVehicleDetails()
+    }
+    
+    
+    // MARK: - FETCH VEHICLE LIST
+    
+    private func fetchVehicleDetails(){
         self.view.endEditing(true)
         if let size = randomVcountTxtField.text {
             self.viewModel.getVehicleList(size: size)
         }
-        
-        
     }
     
     
@@ -219,7 +265,9 @@ extension LandingPageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  
+        let selectedVehicleDetails = self.viewModel.getCellViewModel(at: indexPath)
+        
+        VehicleDetailPageViewController.showVehicleDetailViewPage(sourceView: self, vehicleDetails: selectedVehicleDetails)
     }
     
     //
