@@ -1,5 +1,5 @@
 //
-//  EmissionCalculatorTests.swift
+//  VehicleDetailsViewModalTests.swift
 //  RidesTests
 //
 //  Created by Subin Kuriakose on 13/02/23.
@@ -18,6 +18,9 @@ class EmissionCalculatorTests: XCTestCase {
     }
     
     //SUCCESS
+    // for the first 5000km travelled, 1 unit of carbon is emitted per kilometre
+    // after the first 5000km travelled, 1.5 units is emitted per kilometre
+        
     func test_EmissionCalculatorBelow5000KilometerageTest(){
         
         let successResult = viewModel.getEmissionCalculater(totalKilometers: 4521)

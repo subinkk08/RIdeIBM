@@ -17,6 +17,7 @@ class RangeCheckInputVehicleRandomListTests: XCTestCase {
     }
     
     //SUCCESS TEST CASES
+    // value must be an integer in the range 1 to 100
     func testChecktRangeSuccess(){
         let successResult = viewModel.checkRandomRange(input: "79")
         XCTAssertTrue(successResult, "It is valid")
