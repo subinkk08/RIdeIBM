@@ -41,7 +41,7 @@ class LandingPageViewController: UIViewController{
     
     private func initView(){
         self.registerCharecterCell()
-        self.setPageTitle(name: AppConstants.pageTitle)
+        self.setPageTitle(name: AppConstants.VehicleListpageTitle)
         self.setUpKeyboardGestures()
         self.SetUpVehicleSortSegmentControl()
         self.activityIndicator(hidden: true)

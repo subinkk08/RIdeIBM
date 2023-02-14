@@ -8,30 +8,30 @@
 import Foundation
 
 
-protocol emissionCalculatorProtocol:AnyObject{
+protocol EmissionCalculatorProtocol:AnyObject{
     func getEmissionCalculatoryBy(totalKilometers:Int,initialKiloMeterRange:Int)->Double
 }
 
-struct emissionCalculatorModal{
-    var emissionCalculator:emissionCalculatorProtocol
+struct EmissionCalculatorModal{
+    var emissionCalculator:EmissionCalculatorProtocol
     var initialKiloMeterRange:Int = 5000 // As per business rule
-    var unitsOfCarbonEmittedString = "units"
+   // var unitsOfCarbonEmittedString = "units"
     
-    init(calculator:emissionCalculatorProtocol){
+    init(calculator:EmissionCalculatorProtocol){
         self.emissionCalculator = calculator
     }
     
-    func calculateEmissionRateByKilometers(kilometers:Int)->String{
-        let emissionResult = self.getEmissionCalculater(totalKilometers: kilometers)
-        return "\(emissionResult) \(unitsOfCarbonEmittedString)"
-    }
+//    func calculateEmissionRateByKilometers(kilometers:Int)->String{
+//        let emissionResult = self.getEmissionCalculater(totalKilometers: kilometers)
+//        return "\(emissionResult) \(unitsOfCarbonEmittedString)"
+//    }
     
-    private func getEmissionCalculater(totalKilometers:Int)->Double{
+     func getEmissionCalculater(totalKilometers:Int)->Double{
         return emissionCalculator.getEmissionCalculatoryBy(totalKilometers: totalKilometers, initialKiloMeterRange: initialKiloMeterRange)
 
     }
 }
-class emissionCalculatorService:emissionCalculatorProtocol{
+class EmissionCalculatorService:EmissionCalculatorProtocol{
     
     
     //TO FIND THE EMISSION RATE BY KILOMETERS

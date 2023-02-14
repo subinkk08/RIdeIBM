@@ -60,4 +60,5 @@ class VehicleDetailCollectionViewCell: UICollectionViewCell {
 
 enum VehicleDetailPageSection : Int{
     case vehicleDetails = 0
+    case emissionDetails = 1
 }

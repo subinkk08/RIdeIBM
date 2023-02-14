@@ -10,7 +10,8 @@ import Foundation
 class VehicleDetailsPageViewModal:NSObject {
     var reloadCollectionViewClosure: (()->())?
     var vehicleDetails:VechicleListPresentModal = VechicleListPresentModal()
-    var totalSections = 1
+    var emissionDetails:VehicleEmissionPresentModal = VehicleEmissionPresentModal()
+    var totalSections = 2
     override init() {
         
     }
@@ -19,6 +20,7 @@ class VehicleDetailsPageViewModal:NSObject {
     // TO SET SELECTED VEHICL DETAILS FROM VEHICLE LISTING PAGE
     func setDataSource(item:VechicleListPresentModal){
         self.vehicleDetails = item
+        emissionDetails = VehicleEmissionPresentModal().getEmissionPresentDetails(kilometerage: self.vehicleDetails.kilometrage ?? 0)
     }
     
     func getPageHeader()->String {
@@ -27,13 +29,16 @@ class VehicleDetailsPageViewModal:NSObject {
     }
     //MARK: COLLECTION VIEW LISTED
     
-    func getCellViewModel( section:Int ,indexPath: IndexPath ) -> VechicleListPresentModal {
+    func getCellViewModelForVehicle() -> VechicleListPresentModal {
         return vehicleDetails
+    }
+     func getCellViewModelForEmission() -> VehicleEmissionPresentModal {
+         return emissionDetails
     }
     var numberOfSections: Int {
         return self.totalSections
     }
-    func  getNumberOfItemsInSection(section:Int)-> Int {
+    func  getNumberOfItemsInSection()-> Int {
         return 1 // VEHICLE DETAILS ONLY REQUIRED 1 ITEM
     }
     
@@ -41,4 +46,18 @@ class VehicleDetailsPageViewModal:NSObject {
         self.reloadCollectionViewClosure?()  // RELOAD TABLEVIEW
     }
     
+}
+
+struct VehicleEmissionPresentModal {
+    var emissionBasedOnKilometerageKey:String = "CO2:"
+    var emissionBasedOnKilometerageVlaue:String = ""
+ 
+    
+    func getEmissionPresentDetails(kilometerage:Int) -> VehicleEmissionPresentModal {
+        var emissionModal = VehicleEmissionPresentModal()
+        let service = EmissionCalculatorService()
+        let emissionCalculatorResult =  EmissionCalculatorModal(calculator: service).getEmissionCalculater(totalKilometers:kilometerage)
+        emissionModal.emissionBasedOnKilometerageVlaue = "\(emissionCalculatorResult) emmitted"
+        return emissionModal
+    }
 }

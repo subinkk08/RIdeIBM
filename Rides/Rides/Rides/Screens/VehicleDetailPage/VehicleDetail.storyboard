@@ -78,8 +78,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asG-bL-vCg">
                                 <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ous-63-far">
-                                        <rect key="frame" x="5" y="10" width="404" height="179"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ous-63-far">
+                                        <rect key="frame" x="5" y="10" width="404" height="802"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ImE-db-gLP">
                                             <size key="itemSize" width="128" height="128"/>
@@ -98,6 +98,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ous-63-far" secondAttribute="trailing" constant="5" id="5P5-of-06i"/>
                                     <constraint firstItem="ous-63-far" firstAttribute="leading" secondItem="asG-bL-vCg" secondAttribute="leading" constant="5" id="OZb-jS-1tf"/>
+                                    <constraint firstAttribute="bottom" secondItem="ous-63-far" secondAttribute="bottom" id="T5Z-Gn-csu"/>
                                     <constraint firstItem="ous-63-far" firstAttribute="top" secondItem="asG-bL-vCg" secondAttribute="top" constant="10" id="inS-8o-fjW"/>
                                 </constraints>
                             </view>
@@ -112,7 +113,6 @@
                             <constraint firstItem="DnF-aV-YlR" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ePq-Uc-wrK"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="asG-bL-vCg" secondAttribute="trailing" id="jNZ-Ln-GjL"/>
                             <constraint firstItem="asG-bL-vCg" firstAttribute="top" secondItem="DnF-aV-YlR" secondAttribute="bottom" id="l9H-HN-UMA"/>
-                            <constraint firstItem="ous-63-far" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.2" id="vC0-7k-nlW"/>
                         </constraints>
                     </view>
                     <connections>

@@ -35,6 +35,7 @@ class VehicleDetailPageViewController: UIViewController, UIGestureRecognizerDele
     private func initView(){
         self.enableSwipeBackGesture()
         self.registerVehicleDetailCell()
+        self.registerEmissionDetailCell()
 
     }
     
@@ -64,6 +65,9 @@ class VehicleDetailPageViewController: UIViewController, UIGestureRecognizerDele
     
     private func registerVehicleDetailCell(){
         collectionVehicleDetails.register(VehicleDetailCollectionViewCell.nib, forCellWithReuseIdentifier: VehicleDetailCollectionViewCell.identifier)
+    }
+    private func registerEmissionDetailCell(){
+        collectionVehicleDetails.register(EmissionDetailsCollectionViewCell.nib, forCellWithReuseIdentifier: EmissionDetailsCollectionViewCell.identifier)
     }
     private func setDataSourceToViewModal(){
         self.viewModel.setDataSource(item: self.vehicleDetails)
@@ -109,7 +113,7 @@ extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.totalSections
+        return self.viewModel.getNumberOfItemsInSection()
     
     }
     
@@ -124,7 +128,14 @@ extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollect
 
             return cell
         }
-        return UICollectionViewCell()
+        else{
+            guard let cell = collectionVehicleDetails.dequeueReusableCell(withReuseIdentifier:EmissionDetailsCollectionViewCell.identifier, for: indexPath) as? EmissionDetailsCollectionViewCell else {
+                fatalError("dequeued wrong cell")
+            }
+            cell.setCellItem(item: self.viewModel.emissionDetails)
+
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -132,8 +143,12 @@ extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width:self.collectionVehicleDetails.frame.width+100, height:collectionVehicleDetails.frame.height)
+        if indexPath.section == VehicleDetailPageSection.vehicleDetails.rawValue {
+        return CGSize(width:self.collectionVehicleDetails.frame.width, height:collectionVehicleDetails.frame.height)
+       }
+        else{
+            return CGSize(width:self.collectionVehicleDetails.frame.width-20, height:collectionVehicleDetails.frame.height)
+        }
     }
     
 }

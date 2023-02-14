@@ -18,7 +18,8 @@ struct CommonFontList{
 }
 struct AppConstants{
     static let appName = "Rides"
-    static let pageTitle = "Vehicle List"
+    static let VehicleListpageTitle = "Vehicle List"
+    static let VehicleDetailpageTitle = "Vehicle Details"
     static let vehiclePageSortByVinText = "Vin"
     static let vehiclePageSortByCarTypeText = "Car Type"
     static let vehicleListTableViewAnimateDuration:Double = 0.2
