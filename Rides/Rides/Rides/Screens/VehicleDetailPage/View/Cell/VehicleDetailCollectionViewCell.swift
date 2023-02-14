@@ -12,22 +12,16 @@ class VehicleDetailCollectionViewCell: UICollectionViewCell {
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
     
-    
+    // MARK: -  OUTLETS
     @IBOutlet weak var vinKeyLabel: CellKeyLabel!
     @IBOutlet weak var vinValueLabel: CellValueLabel!
-    
     @IBOutlet weak var makeAndModelKeyLabel: CellKeyLabel!
-    
     @IBOutlet weak var makeAndModelValueLabel: CellValueLabel!
-
     @IBOutlet weak var colorValueLabel: CellValueLabel!
     @IBOutlet weak var colorKeyLabel: CellKeyLabel!
-    
     @IBOutlet weak var carTypeKeyLabel: CellKeyLabel!
-    
     @IBOutlet weak var carTypeValueLabel: CellValueLabel!
-    
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
@@ -51,7 +45,7 @@ class VehicleDetailCollectionViewCell: UICollectionViewCell {
         preservesSuperviewLayoutMargins = false
                
     }
-   
+    
     override func prepareForReuse() {
         super.prepareForReuse()
       
@@ -60,4 +54,5 @@ class VehicleDetailCollectionViewCell: UICollectionViewCell {
 
 enum VehicleDetailPageSection : Int{
     case vehicleDetails = 0
+    case emissionDetails = 1
 }

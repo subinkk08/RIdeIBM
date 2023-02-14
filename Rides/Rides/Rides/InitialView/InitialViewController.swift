@@ -19,7 +19,7 @@ class InitialViewController: UIViewController {
     
     // Setting up the view
     func setUpInitialView(){
-        hideNavbar()
+       // hideNavbar()
         loadLogo()
     }
     

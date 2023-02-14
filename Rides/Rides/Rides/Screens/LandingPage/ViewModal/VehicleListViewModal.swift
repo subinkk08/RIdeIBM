@@ -30,6 +30,7 @@ class VehicleListViewModal:NSObject {
             self.showAlertClosure?()
         }
     }
+    
     var isLoading: Bool = false {
         didSet {
             self.updateLoadingStatus?()
@@ -37,39 +38,46 @@ class VehicleListViewModal:NSObject {
     }
     
     // TO GET VEHICLE LIST FROM API
-    
     func getVehicleList(size:String){
         
-        self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
+        //VALIDATE THE SIZE
+        let inputRangeService = InputRangeValidatorRandomVehicle()
+        let result = inputRangeService.checkRandomRange(input: size)
         
-        apiServiceManager.fetchVehicleList(size: size) { [ weak self] success, vehicleListResponse, error , msg in
-            self?.isLoading = false
-            if success {
-                self?.vehicleListDisplayModal =   VechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
-                self?.sortVehicleList() // TO SORT LIST BY VIN BY DEFAULT
-                self?.reloadTableViewClosure?() // RELOAD TABLEVIEW
-            }
-            else{
-                if error == CustomAPIError.errorMsg {
-                    self?.vehicleListDisplayModal = []
-                    self?.alertMessage = msg
-                    self?.reloadTableViewClosure?()  // RELOAD TABLEVIEW
-                }
+        if result == true { //GIVEN RANGE IS VALID
+            self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
+            apiServiceManager.fetchVehicleList(size: size) {
+                [ weak self] success,
+                vehicleListResponse,
+                error , msg in
                 
+                self?.isLoading = false
+                if success {
+                    self?.vehicleListDisplayModal =   VechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
+                    self?.sortVehicleList() // TO SORT LIST BY VIN BY DEFAULT
+                    self?.reloadTableViewClosure?() // RELOAD TABLEVIEW
+                }
+                else{
+                    if error == CustomAPIError.errorMsg {
+                        self?.vehicleListDisplayModal = []
+                        self?.alertMessage = msg
+                        self?.reloadTableViewClosure?()  // RELOAD TABLEVIEW
+                    }
+                }
             }
         }
-        
+        else{
+            let msg = AppConstants.inputRangeVehicleErrorMsg
+            self.alertMessage = msg
+        }
     }
     
     // TO GET SORT NAME LIST
-    
     func getSortNameList()->[String]{
         return [AppConstants.vehiclePageSortByVinText,AppConstants.vehiclePageSortByCarTypeText]
     }
     
-    
-    // SORT BY SELECTED TYPE
-    
+    // SORT BY SELECTED TYP
     func sortVehicleListBySegmentControl(value:Int){
         
         
@@ -94,7 +102,6 @@ class VehicleListViewModal:NSObject {
     }
     
     //MARK: TABLE VIEW RELATED
-    
     var numberOfCells: Int {
         return vehicleListDisplayModal.count
     }
@@ -106,24 +113,19 @@ class VehicleListViewModal:NSObject {
     }
 }
 
-
 //PRESENT VIEW MODAL FOR VEHICLE LIST
-
 struct VechicleListPresentModal{
-    
     
     var vin:String = ""
     var makeAndModal:String = ""
     var color:String = ""
     var carType:String = ""
     var kilometrage:Int? = nil
-    
     var vinKey:String = "Vin:"
     var makeAndModalKey:String = "Make and Model:"
     var colorKey:String = "Color:"
     var carTypeKey:String = "Car Type:"
 
-    
     func getVehicleListDisplayListBy(apiResponse:[VehicleListAPIModal])->[VechicleListPresentModal] {
         var resultList:[VechicleListPresentModal] = []
         for resultItem in apiResponse {
@@ -137,8 +139,6 @@ struct VechicleListPresentModal{
         }
         return resultList
     }
-    
-    
 }
 
 enum SortVehicleList:Int{

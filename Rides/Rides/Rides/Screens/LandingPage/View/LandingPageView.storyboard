@@ -17,37 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3q-dy-g3b">
-                                <rect key="frame" x="0.0" y="44" width="375" height="40"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d7-9s-ZSv">
-                                        <rect key="frame" x="0.0" y="39" width="375" height="1"/>
-                                        <color key="backgroundColor" name="AppTitleViewBottomline"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="w4l-ie-Kvg"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2K-jZ-JbR" customClass="PageHeaderLabel" customModule="Rides" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                        <color key="textColor" name="PageHeaderLabel"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="AppTopView"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="3d7-9s-ZSv" secondAttribute="bottom" id="3st-o4-1xU"/>
-                                    <constraint firstItem="A2K-jZ-JbR" firstAttribute="leading" secondItem="L3q-dy-g3b" secondAttribute="leading" id="IJ4-7y-m5r"/>
-                                    <constraint firstAttribute="height" constant="40" id="LLn-HE-Udh"/>
-                                    <constraint firstItem="A2K-jZ-JbR" firstAttribute="top" secondItem="L3q-dy-g3b" secondAttribute="top" id="ck0-pq-dMR"/>
-                                    <constraint firstAttribute="bottom" secondItem="A2K-jZ-JbR" secondAttribute="bottom" id="nQV-kc-ISH"/>
-                                    <constraint firstAttribute="trailing" secondItem="3d7-9s-ZSv" secondAttribute="trailing" id="qW8-1e-iM6"/>
-                                    <constraint firstItem="3d7-9s-ZSv" firstAttribute="leading" secondItem="L3q-dy-g3b" secondAttribute="leading" id="rnr-ka-hHZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="A2K-jZ-JbR" secondAttribute="trailing" id="y2d-Kv-CDp"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJW-Tz-PJB" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="84" width="375" height="728"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0v-fQ-GEk" userLabel="SearchView">
                                         <rect key="frame" x="0.0" y="10" width="375" height="60"/>
@@ -55,7 +26,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your count to list vehicle" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="LJh-LR-4uf">
                                                 <rect key="frame" x="15" y="10" width="255" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKQ-Sa-jQ2">
                                                 <rect key="frame" x="285" y="10" width="75" height="40"/>
@@ -91,16 +62,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmQ-dE-P63" userLabel="ListView">
-                                        <rect key="frame" x="0.0" y="70" width="375" height="658"/>
+                                        <rect key="frame" x="0.0" y="70" width="375" height="698"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJ8-f2-LB4" userLabel="TableView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="658"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="698"/>
                                                 <subviews>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iS-TK-eKk" userLabel="SortView">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                         <subviews>
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yrn-Bf-ZhM">
-                                                                <rect key="frame" x="122" y="4.6666666666666572" width="131" height="32"/>
+                                                                <rect key="frame" x="122" y="4.6666666666666714" width="131" height="32"/>
                                                                 <segments>
                                                                     <segment title="First"/>
                                                                     <segment title="Second"/>
@@ -115,7 +86,7 @@
                                                         </constraints>
                                                     </view>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ASI-F3-YS0">
-                                                        <rect key="frame" x="0.0" y="50" width="375" height="578"/>
+                                                        <rect key="frame" x="0.0" y="50" width="375" height="618"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <connections>
                                                             <outlet property="dataSource" destination="Y6W-OH-hqX" id="WUP-Go-3gU"/>
@@ -135,10 +106,10 @@
                                                 </constraints>
                                             </view>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PDd-r9-9bP">
-                                                <rect key="frame" x="177.66666666666666" y="319" width="20" height="20"/>
+                                                <rect key="frame" x="177.66666666666666" y="339" width="20" height="20"/>
                                             </activityIndicatorView>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noData" translatesAutoresizingMaskIntoConstraints="NO" id="ELP-gf-wTg">
-                                                <rect key="frame" x="165" y="306.66666666666669" width="45" height="45"/>
+                                                <rect key="frame" x="165" y="326.66666666666669" width="45" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="45" id="eKZ-xs-ls1"/>
                                                     <constraint firstAttribute="height" constant="45" id="txe-Q0-yo1"/>
@@ -175,18 +146,14 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OJW-Tz-PJB" secondAttribute="trailing" id="11a-am-bBN"/>
                             <constraint firstItem="OJW-Tz-PJB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="PN6-hS-jfP"/>
-                            <constraint firstItem="OJW-Tz-PJB" firstAttribute="top" secondItem="L3q-dy-g3b" secondAttribute="bottom" id="Rus-XY-zFC"/>
+                            <constraint firstItem="OJW-Tz-PJB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="VeF-xk-DOO"/>
                             <constraint firstAttribute="bottom" secondItem="OJW-Tz-PJB" secondAttribute="bottom" id="WNt-n1-wUA"/>
-                            <constraint firstItem="L3q-dy-g3b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="foX-SP-Wsv"/>
-                            <constraint firstItem="L3q-dy-g3b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="nzd-tf-S01"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="L3q-dy-g3b" secondAttribute="trailing" id="pfF-9P-DOO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="SearchButtonView" destination="DKQ-Sa-jQ2" id="jb6-Cy-2vT"/>
                         <outlet property="activityController" destination="PDd-r9-9bP" id="HgM-KK-jqq"/>
                         <outlet property="noDataImage" destination="ELP-gf-wTg" id="Tfi-xD-mf6"/>
-                        <outlet property="pageTitleLbl" destination="A2K-jZ-JbR" id="gRl-fr-9hT"/>
                         <outlet property="randomVcountTxtField" destination="LJh-LR-4uf" id="Q3t-sx-fTw"/>
                         <outlet property="sortBySegmentControl" destination="yrn-Bf-ZhM" id="idn-uu-SOi"/>
                         <outlet property="sortControlView" destination="7iS-TK-eKk" id="3FE-1s-LEP"/>
@@ -198,19 +165,10 @@
             <point key="canvasLocation" x="-1940" y="30.295566502463057"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="A2K-jZ-JbR"/>
-    </designables>
     <resources>
         <image name="noData" width="16" height="16"/>
-        <namedColor name="AppTitleViewBottomline">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="AppTopView">
             <color red="0.83921568627450982" green="0.37647058823529411" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="PageHeaderLabel">
-            <color red="0.0030000000260770321" green="0.0030000000260770321" blue="0.0030000000260770321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VehicleSearchBtnBgColor">
             <color red="0.18823529411764706" green="0.12156862745098039" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

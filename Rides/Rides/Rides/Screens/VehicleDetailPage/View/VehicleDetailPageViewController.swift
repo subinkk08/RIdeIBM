@@ -12,10 +12,11 @@
 
 import UIKit
 
-class VehicleDetailPageViewController: UIViewController, UIGestureRecognizerDelegate {
+final class VehicleDetailPageViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    // MARK: -  OUTLETS
     @IBOutlet weak var collectionVehicleDetails: UICollectionView!
-    @IBOutlet weak var pageTItleLabel: PageHeaderLabel!
+    @IBOutlet weak var pageIndicator: UIPageControl!
     static let storyboardName:String = "VehicleDetail"
     static let storyBoardId:String = "VehicleDetailPageViewController"
     
@@ -25,30 +26,25 @@ class VehicleDetailPageViewController: UIViewController, UIGestureRecognizerDele
     // MARK: -  VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-  
         self.initView()
         self.initVM()
+        
     }
     
     // MARK: - INITIAL VIEW LOAD
-    
     private func initView(){
-        self.enableSwipeBackGesture()
+       // self.enableSwipeBackGesture()
         self.registerVehicleDetailCell()
-
+        self.registerEmissionDetailCell()
+        self.setupPageIndicatory()
     }
     
     // MARK: - INITIAL VIEW MODEL
-    
     private func initVM(){
-        
-        
         self.setDataSourceToViewModal()
-        self.setPageTitle()
+        self.setNavigationBarTitle()
         self.viewModel.showVehicleDetails() //TO GET VEHICLE DETAILS FROM VIEW MODAL
-    
         self.viewModel.reloadCollectionViewClosure = { [weak self] () in
-
             DispatchQueue.main.async {
                 self?.collectionVehicleDetails.reloadData()
             }
@@ -56,75 +52,68 @@ class VehicleDetailPageViewController: UIViewController, UIGestureRecognizerDele
     }
     
     // MARK: - PRIVATE METHODS
+    private func setNavigationBarTitle(){
+        self.navigationItem.title =  self.viewModel.getPageHeaderTitle()
+    }
     
-    private func enableSwipeBackGesture(){
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-           navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    private func setupPageIndicatory(){
+        self.pageIndicator.numberOfPages = self.viewModel.getPageIndicatroCount()
+        self.pageIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.pageIndicator.currentPageIndicatorTintColor = UIColor.orange
+        self.pageIndicator.pageIndicatorTintColor = UIColor.lightGray.withAlphaComponent(0.8)
     }
     
     private func registerVehicleDetailCell(){
         collectionVehicleDetails.register(VehicleDetailCollectionViewCell.nib, forCellWithReuseIdentifier: VehicleDetailCollectionViewCell.identifier)
     }
+    
+    private func registerEmissionDetailCell(){
+        collectionVehicleDetails.register(EmissionDetailsCollectionViewCell.nib, forCellWithReuseIdentifier: EmissionDetailsCollectionViewCell.identifier)
+    }
+    
     private func setDataSourceToViewModal(){
         self.viewModel.setDataSource(item: self.vehicleDetails)
     }
-    private func setPageTitle(){
-        self.pageTItleLabel.text = self.viewModel.getPageHeader()
-    }
   
-    
     // MARK: - SHOW VEHICLE DETAIL PAGE
-    
-    
-    class func showVehicleDetailViewPage(sourceView:UIViewController,vehicleDetails:VechicleListPresentModal){
+    class func showVehicleDetailViewPage(
+        sourceView:UIViewController,
+        vehicleDetails:VechicleListPresentModal){
         let storyboard = UIStoryboard(name: VehicleDetailPageViewController.storyboardName, bundle: nil)
         let detailViewVC:VehicleDetailPageViewController = storyboard.instantiateViewController(withIdentifier: VehicleDetailPageViewController.storyBoardId) as! VehicleDetailPageViewController
         // sourceView.navigationController?.isNavigationBarHidden = true
         detailViewVC.vehicleDetails = vehicleDetails
         sourceView.navigationController?.pushViewController(detailViewVC, animated: true)
     }
-    
-    @IBAction func btnBackTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
-// MARK: - COLLECTION VIEW  DATA SOURCE AND DELEGATES
 
+// MARK: - COLLECTION VIEW  DATA SOURCE AND DELEGATES
 extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-       
         return self.viewModel.numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.totalSections
-    
+        return self.viewModel.getNumberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == VehicleDetailPageSection.vehicleDetails.rawValue {
-            
             guard let cell = collectionVehicleDetails.dequeueReusableCell(withReuseIdentifier:VehicleDetailCollectionViewCell.identifier, for: indexPath) as? VehicleDetailCollectionViewCell else {
                 fatalError("dequeued wrong cell")
             }
             cell.setCellItem(item: self.viewModel.vehicleDetails)
-
             return cell
         }
-        return UICollectionViewCell()
+        else{
+            guard let cell = collectionVehicleDetails.dequeueReusableCell(withReuseIdentifier:EmissionDetailsCollectionViewCell.identifier, for: indexPath) as? EmissionDetailsCollectionViewCell else {
+                fatalError("dequeued wrong cell")
+            }
+            cell.setCellItem(item: self.viewModel.emissionDetails)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -132,10 +121,20 @@ extension VehicleDetailPageViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width:self.collectionVehicleDetails.frame.width+100, height:collectionVehicleDetails.frame.height)
+        if indexPath.section == VehicleDetailPageSection.vehicleDetails.rawValue {
+        return CGSize(width:self.collectionVehicleDetails.frame.width, height:collectionVehicleDetails.frame.height)
+       }
+        else{
+            return CGSize(width:self.collectionVehicleDetails.frame.width, height:collectionVehicleDetails.frame.height)
+        }
     }
-    
 }
 
-
+extension VehicleDetailPageViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.pageIndicator.currentPage = Int(
+            (collectionVehicleDetails.contentOffset.x / collectionVehicleDetails.frame.width)
+                .rounded(.toNearestOrAwayFromZero)
+            )
+    }
+}

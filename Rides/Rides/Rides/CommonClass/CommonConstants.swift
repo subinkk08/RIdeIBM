@@ -18,13 +18,15 @@ struct CommonFontList{
 }
 struct AppConstants{
     static let appName = "Rides"
-    static let pageTitle = "Vehicle List"
+    static let VehicleListPageTitle = "Vehicle List"
+    static let VehicleDetailpageTitle = "Vehicle Details"
     static let vehiclePageSortByVinText = "Vin"
     static let vehiclePageSortByCarTypeText = "Car Type"
     static let vehicleListTableViewAnimateDuration:Double = 0.2
     static let alertOk = "Ok"
     static let vehicleCountPlaceholderText = "Enter your count"
     static let backBtnTitle = "Back"
+    static let inputRangeVehicleErrorMsg = "Please enter a number between 1 and 100"
 }
 struct CommonNetWorkResponseErrorMsg {
    static let somethingWentWrong = "Something went wrong."
