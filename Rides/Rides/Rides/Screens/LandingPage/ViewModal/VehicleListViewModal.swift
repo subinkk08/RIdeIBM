@@ -40,23 +40,36 @@ class VehicleListViewModal:NSObject {
     
     func getVehicleList(size:String){
         
-        self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
+        //VALIDATE THE SIZE
         
-        apiServiceManager.fetchVehicleList(size: size) { [ weak self] success, vehicleListResponse, error , msg in
-            self?.isLoading = false
-            if success {
-                self?.vehicleListDisplayModal =   VechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
-                self?.sortVehicleList() // TO SORT LIST BY VIN BY DEFAULT
-                self?.reloadTableViewClosure?() // RELOAD TABLEVIEW
-            }
-            else{
-                if error == CustomAPIError.errorMsg {
-                    self?.vehicleListDisplayModal = []
-                    self?.alertMessage = msg
-                    self?.reloadTableViewClosure?()  // RELOAD TABLEVIEW
+        let inputRangeService = InputRangeValidatorRandomVehicle()
+        
+        let result = inputRangeService.checkRange(input: size)
+        
+        if result == true { //GIVEN RANGE IS VALID
+            
+            self.isLoading = true  // TO SHOW ACTIVITY INDICATOR
+            
+            apiServiceManager.fetchVehicleList(size: size) { [ weak self] success, vehicleListResponse, error , msg in
+                self?.isLoading = false
+                if success {
+                    self?.vehicleListDisplayModal =   VechicleListPresentModal().getVehicleListDisplayListBy(apiResponse: vehicleListResponse ?? [])
+                    self?.sortVehicleList() // TO SORT LIST BY VIN BY DEFAULT
+                    self?.reloadTableViewClosure?() // RELOAD TABLEVIEW
                 }
-                
+                else{
+                    if error == CustomAPIError.errorMsg {
+                        self?.vehicleListDisplayModal = []
+                        self?.alertMessage = msg
+                        self?.reloadTableViewClosure?()  // RELOAD TABLEVIEW
+                    }
+                    
+                }
             }
+        }
+        else{
+            let msg = AppConstants.inputRangeVehicleErrorMsg
+            self.alertMessage = msg
         }
         
     }
@@ -122,7 +135,7 @@ struct VechicleListPresentModal{
     var makeAndModalKey:String = "Make and Model:"
     var colorKey:String = "Color:"
     var carTypeKey:String = "Car Type:"
-
+    
     
     func getVehicleListDisplayListBy(apiResponse:[VehicleListAPIModal])->[VechicleListPresentModal] {
         var resultList:[VechicleListPresentModal] = []

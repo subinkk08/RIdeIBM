@@ -25,6 +25,7 @@ struct AppConstants{
     static let alertOk = "Ok"
     static let vehicleCountPlaceholderText = "Enter your count"
     static let backBtnTitle = "Back"
+    static let inputRangeVehicleErrorMsg = "Please enter a number between 1 and 100"
 }
 struct CommonNetWorkResponseErrorMsg {
    static let somethingWentWrong = "Something went wrong."
